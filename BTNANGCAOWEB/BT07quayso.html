@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jq.js"></script>
+    <script src="BT07.js"></script>
+    <style>
+        body{
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div#banner{
+            background-image: linear-gradient(360deg, green,black);
+            height: 100px;
+            
+        }
+        div#banner > h1{
+            margin: 0px;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            color: yellow;
+            text-shadow: 2px 2px 10px black;
+        }
+
+        div#menu{
+            background-color: blue;
+            
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap:15px;
+            font-weight: bold;
+            margin-top: 5px;
+            height: 30px;
+        }
+        a{
+           
+            
+            color: white;
+            text-decoration: none;
+
+        }
+
+        div#content{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            height: 100%;
+            margin-top: 10px;
+        }
+        div#dashboard{
+            color: white;
+            background-image: url("picture/green.webp");
+            background-repeat: repeat-y;
+            background-size: contain;
+            height: 500px;
+            width: 15%;
+        } 
+        #dashboard li{
+            margin-top: 15px;
+            padding: 0px;
+        }
+
+        div#dangky{
+            
+            border: 1px solid black;
+            width:60%;
+        }
+        div#form{
+            background-color: lightblue;
+            height: 40%;
+            width: 100%;
+        }
+        h2.tuade{
+            color: blue;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 2px;
+        }
+        
+        div.quangcao{
+            background-image: url("picture/green.webp");
+            background-repeat: repeat-y;
+            background-size: contain;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:10px;
+        }
+        div.vung{
+            margin-top: 10px;
+            border: 1px solid green;
+            border-radius: 20px;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            width: 85%;
+            height: 35%;
+        }
+        div.vung > h3{
+            margin-top: 35px;
+        }
+        div.hoten{
+            background-color: blue;
+            color: yellow;
+            
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div.hoten > h1{
+            font-size: 20px;
+        }
+        tr>td:nth-child(1){
+            width: 40%;
+        }
+        div.kq{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        div#banner h1{
+            font-size: x-large;
+            transition: color 1s linear, font-size 1s linear;
+        }
+        div#banner h1:hover{
+            color:red;
+            font-size: xx-large;
+        }
+        div#menu a {
+            font-size: large;
+            transition: color 1s linear, font-size 1s linear;
+        }
+        div#menu a:hover{
+            color:yellow;
+            font-size: x-large;
+        }
+        div.so1,div.so2, div.so3{
+            float:left;
+            width: 30%;
+            height: 30%;
+            position: relative;
+            top: 5px;
+            margin-left:5px;
+            background-color: lightgray;
+            color: blue;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            font-weight: bold;
+            font-size: 25px;
+            text-shadow: 0px 0px 2px black;
+        }
+        div.quayso{
+            clear:left;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-self: center;
+        }
+        div.quayso>button{
+            margin-top: 10px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="container">
+        <div id="banner"><h1>TRÒ CHƠI QUAY SỐ</h1></div>
+        <div id="menu">
+            <a href="BT07.html">Trang chủ</a>
+            <a href="BT07quayso.html">Trò chơi quay số</a>
+            <a href="BT07xucxac.html">Trò chơi quay xucxac</a>
+        </div>
+        <div id="content">
+            <div id="dashboard">
+                <ul type="disc">
+                    <li>C#</li>
+                    <li>PHP & MySQL</li>
+                    <li>XML</li>
+                    <li>Java</li>
+                    <li>SQL Server</li>
+                    <li>ASP.NET</li>
+                    <li>Androit</li>
+                    <li>Windows <br>Phone</li>
+                    
+                </ul>
+            </div>
+            <div id="dangky">
+                <div class="so1">
+                    <h1>1</h1>
+                </div>
+                <div class="so2">
+                    <h1>2</h1>
+                </div>
+                <div class="so3">
+                    <h1>3</h1>
+                </div>
+                <div class="quayso" >
+                    <button id="quayso">Quay số</button>
+                    <p id="kq"></p>
+                </div>
+                
+            </div>
+            <div class="quangcao">
+                    <div class="vung">
+                        <h3>Vùng quảng cáo 1</h3>
+                    </div>
+                    
+                    <div class="vung">
+                        <h3>Vùng quảng cáo 2</h3>
+                    </div>
+                </div>
+
+        </div>
+        <div class="hoten">
+            <h1>Trương Bình Minh 2451012066</h1>
+        </div>
+    </div>
+</body>
+</html>

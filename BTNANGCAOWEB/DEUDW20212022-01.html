@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jq.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0px;
+        }
+       
+        div.banner{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background-color: lightblue;
+            border-bottom: 1px solid white;
+        }
+        div.banner h1{
+            text-shadow: 2px 2px 5px red;
+            color:yellow;
+            font-weight: 800;
+            padding-left: 10px;
+        }
+        div.hoten{
+            color:white;
+            padding-right: 10px;
+            text-shadow: 2px 2px 5px black;
+        }
+        nav.menu{
+            background-color: lightseagreen;
+            height:30px;
+            
+        }
+        nav.menu > ul{
+            margin: 0px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap:20px;
+        }
+
+        nav.menu a{
+            text-decoration: none;
+            color:white;
+
+        }
+        nav.menu > ul.dashboard > li{
+            background-color: seagreen;
+            height:30px;
+            width:100px;
+            text-align: center;
+            
+        }
+        ul > li ul.submenu{
+            background-color: seagreen;
+            display: none;
+            position: absolute;
+            padding: 0px;
+            
+            width: 120px;
+            text-align: left;
+            
+        }
+
+        ul.submenu > li{
+            border-bottom: 1px solid white;
+            
+        }
+        ul.submenu > li > a{
+            padding-left: 10px;
+            height: 20px;
+            color:white;
+        }
+        ul.dashboard > li:hover{
+            opacity: 0.9;
+        }
+
+        ul.dashboard > li:hover ul.submenu{
+            display: block;
+            
+        }
+        ul.submenu > li a:hover{
+            opacity: 0.8;
+        }
+        div.content{
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            margin-top: 8px;
+        }
+         div.carname{
+            display: flex;
+            flex-direction: column;
+            
+            align-items: center;
+            background-color: lightblue;
+            
+            padding-left:30px;
+            padding-right: 30px;
+            
+        }
+        div.carname > div img{
+            width: 100%;
+            height:100%;
+            
+        }
+
+        div.info{
+            background-color: lightblue;
+        }
+        div.table >table{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 1000px;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        table > caption{
+            color: red;
+        }
+        td{
+            border-collapse: collapse;
+            border: 1px solid black;
+            
+        }
+        td > p{
+            padding-right:50px;
+            margin:10px
+        }
+        div.red{
+            height:50px;
+            width: 50px;
+            background-color: red;
+            border: 1px solid black;
+            margin: 10px;
+            float:left;
+        }
+        div.blue{
+            height:50px;
+            width: 50px;
+            background-color: blue;
+            border: 1px solid black;
+            margin: 10px;
+            float:left;
+        }
+        div.yellow{
+            height:50px;
+            width: 50px;
+            background-color: yellow;
+            border: 1px solid black;
+            margin: 10px;
+            float:left;
+        }
+        div.white{
+            height:50px;
+            width: 50px;
+            background-color: white;
+            border: 1px solid black;
+            margin: 10px;
+            float:left;
+        }
+        div.carname div{
+            position: relative;
+            height:100%;
+            transition: height 2s linear;
+        }
+        div.carname div:hover{
+            height: 150%;
+        }
+        div.button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        div.kq{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.kq  > img{
+            
+            width: 150px;
+            height: 150px;
+            padding-top:10px;
+            padding-bottom: 10px;
+
+        }
+        p.space{
+            padding-top: 15px;
+        }
+        div.copyright{
+            background-color: blue;
+            color: yellow;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        p.res{
+            text-align: center;
+            margin:0px;
+        }
+        
+        div.res {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script>
+        
+
+
+        $(document).ready(function(){
+            
+                //mac dinh chon honda khi load trang
+                let loaixe = $("option[name='loaixe']:checked").val();
+                let color ="";
+                $("td.color > div").click(function(){
+                color = $(this).css("background-color");
+                console.log(color);
+
+                 let linkdiv1 = $(".div1 > img").attr("src");
+                let linkdiv2 = $(".div2 > img").attr("src");
+                let linkdiv3 = $(".div3 > img").attr("src");
+                let linkdiv4 = $(".div4 > img").attr("src");
+                console.log(linkdiv2);
+
+                if(color == "rgb(255, 0, 0)"){
+                    $("div.kq > img").attr("src",linkdiv1);
+                }
+                else if(color == "rgb(0, 0, 255)"){
+                    $("div.kq > img").attr("src",linkdiv2);
+                }
+                else if(color == "rgb(255, 255, 0)"){
+                    $("div.kq > img").attr("src",linkdiv3);
+                }
+                else if(color =="rgb(255, 255, 255)"){
+                    $("div.kq > img").attr("src",linkdiv4);
+                }
+                }); 
+
+               
+                
+
+                
+                
+
+
+            $("#dathang").click(function(){
+                let sl = parseInt($("#sl").val());
+                console.log(sl);
+                
+
+                let text = "";
+                if(color == "rgb(255, 0, 0)"){
+                    text = "đỏ";
+                }
+                else if(color == "rgb(0, 0, 255)"){
+                    text = "xanh";
+                }
+                else if(color == "rgb(255, 255, 0)"){
+                    text = "vàng"
+                }
+                else if(color =="rgb(255, 255, 255)"){
+                    text = "trắng"
+                }
+                console.log(text);
+
+                
+                if(sl < 1 || isNaN(sl) || sl==""){
+                    $("#res").text("");
+                
+                }
+
+                else{
+                    $("#res").text("Bạn đặt mua " + sl + " xe " + loaixe + " màu " + text);
+                }
+
+            });
+
+            
+
+           $("#loaixe").change(function(){
+            loaixe=$(this).val();
+            console.log(loaixe);
+             if(loaixe=="Honda"){
+                $("div.div1 > img").attr("src","picture/honda1.jpg");
+                $("div.div2 > img").attr("src","picture/honda2.jpg");
+                $("div.div3 > img").attr("src","picture/honda3.jpg");
+                $("div.div4 > img").attr("src","picture/honda4.jpg");
+                $("img#kqua").attr("src","picture/honda1.jpg");
+            }
+            else if(loaixe=="Kia"){
+                 $("div.div1 > img").attr("src","picture/kia1.jpg");
+                 $("div.div2 > img").attr("src","picture/kia2.jpg");
+                 $("div.div3 > img").attr("src","picture/kia3.jpg");
+                 $("div.div4 > img").attr("src","picture/kia4.jpg");
+                 $("img#kqua").attr("src","picture/kia1.jpg");
+            }
+           });
+
+            
+           
+
+            
+
+           
+            
+
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <div class="baithi"><h1>BÀI THI ỨNG DỤNG WEB</h1></div>
+            <div class="hoten">MSSV: 2451012066 - Họ tên: Trương Bình Minh</div>
+            
+        </div>
+        <nav class="menu">
+            <ul class="dashboard" type="none">
+                <li><a href="DEUDW20212022-01.html">Trang Chủ</a></li>
+                <li class="list"><a href="DEUDW20212022-01.html">Các hãng xe</a>
+                    <ul class="submenu" type="none">
+                        <li><a href="#">Ford</a></li>
+                        <li><a href="#">Honda</a></li>
+                        <li><a href="#">Toyota</a></li>
+                        <li><a href="#">Huyndai</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="carname">
+                <div class="div1"><img src="picture/honda1.jpg"></div>
+                <div class="div2"><img src="picture/honda2.jpg"></div>
+                <div class="div3"><img src="picture/honda3.jpg"></div>
+                <div class="div4"><img src="picture/honda4.jpg"></div>
+            </div>
+            <div class="info">
+                <div class="table">
+                    <table>
+                    <caption><h1>THÔNG TIN ĐẶT HÀNG</h1></caption>
+                    <tr>
+                        <td><p>Loại xe</p></td>
+                        <td>
+                            <select id="loaixe">
+                                <option name="loaixe" >Honda</option>
+                                <option  name="loaixe">Kia</option>
+                            </select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><p>Số lượng</p></td>
+                        <td><input type="number"  id="sl"></td>
+                        
+                    </tr>
+                    <tr>
+                        <td><p>Màu sắc</p></td>
+                        <td class="color">
+                            <div class="red" name="mausac"></div>
+                            <div class="blue" name="mausac"></div>
+                            <div class="yellow" name="mausac"></div>
+                            <div class="white" name="mausac"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="kqimg" colspan="2">
+                            <div class="kq" ><img id="kqua" src="picture/honda1.jpg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="button">
+                                <button id="dathang">Đặt hàng</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td colspan="2" >
+                            <div class = "res"><p class="space" id="res"></p></div>
+                            
+                        </td>
+                        
+                    </tr>
+                </table>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>Copyright 2022</p>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

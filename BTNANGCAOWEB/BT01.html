@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+    
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin:0px;
+        }
+        div.board{
+            margin: 10px;
+            border: 2px solid black;
+        }
+        h1,p {
+            margin: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            let a= [];
+            let flag = true;
+            
+            
+
+            $("button#search").click(function(){
+                let text = $("input#timText").val();
+                let txtRe = $("input#replace").val();
+                let chose = $("input#chose").prop("checked");
+                
+                let div = $("div.board").html();
+                if(flag == true){
+                    a.push(div);
+                    flag=false;
+                }
+                
+                if(chose==true){
+                    
+                    div = div.replace(new RegExp(text,"g"),txtRe);
+                    console.log(div);
+                    $("div.board").html(div);
+                    
+                }
+                else{
+                    //khongg phan biet hoa va thuong
+                    div = div.replace(new RegExp(text,"gi"),txtRe);
+                    $("div.board").html(div);
+                }
+                
+            });
+
+            $("button#reset").click(function(){
+                if(a.length < 1){
+                    event.preventDefault();
+                }
+                else{
+                    let re = a.pop();
+                    $("div.board").html(re);
+                    flag = true;
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <h1>Tìm kiếm và thay thế</h1>
+    <hr>
+    <div>
+        <label>Nhập chuỗi cần tìm: </label>
+        <input type="text" id="timText" required>
+        <input type="checkbox" id="chose">Có phân biệt chữ hoa
+    </div>
+    <div>
+        <br>
+        <label>Nhập chuỗi thay thế: </label>
+        <input type="text" id="replace" required> 
+    </div>
+    <div>
+        <br>
+
+        <button id="search">Tìm và thay thế</button>
+        <button id="reset">Khôi phục</button>
+    </div>
+    <div class="board">
+        <h1>CHƯƠNG I. HTML</h1>
+        <p>HTML(Hypertext Markup Language) là một ngôn ngữ đánh dấu siêu văn bản được dùng để tạo ra hầu hết các trang web</p>
+        <h1>CHƯƠNG II. CSS</h1>
+        <p>CSS là một ngôn ngữ iịnh kiểu, một bộ quy tắc để mô tả các hiển thị của các đối tượng trên trang Web</p>
+        <h1>CHƯƠNG III. JAVASCRIPT</h1>
+        <p>Javascript là một ngôn ngữ lập trình xử lý trang web động phía client.</p>
+        <h1>CHƯƠNG IV. JQUERY</h1>
+        <p>jQuery là một thư viện các hàm Javascript giúp nhà phát triển giảm thiểu số lượng mã lệnh khi viết code Javascript</p>
+        
+    </div>
+</body>
+</html>

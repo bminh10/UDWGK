@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin:0px;
+            background-color: wheat;
+        }
+        div.banner{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background-color: cyan;
+        }
+        div.banner > h1{
+            color: pink;
+            text-shadow: 1px 1px 5px brown;
+        }
+        div.menu{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background-color: purple;
+        }
+        
+        li > a{
+            
+            color: burlywood;
+            text-decoration: none;
+            
+            
+        }
+
+        ul.item{
+            display: flex;
+            gap:5px;
+            margin:0px;
+        }
+        ul.item li{
+            background-color: blanchedalmond;
+            border-radius: 10px;
+            width: 100px;
+            text-align: center;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            opacity: 0.9;
+            transition: width 1s linear;
+        }
+
+        div.hoten > p{
+            padding-right: 20px;
+            color:yellow;
+            
+        }
+
+        div.content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+
+        div.number{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        div.number div{
+            border: 5px solid green;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color:blue;
+            font-weight: bold;
+            height:180px;
+            width: 180px;
+            font-size: 60px
+        }
+        div.content div{
+            margin-top:20px;
+        }
+        div.ketqua{
+            font-weight: bold;
+
+        }
+
+        button#quayso{
+            color:yellow;
+            background-color: blue;
+            font-size: 20px;
+            border-radius: 18px;
+            height:50px;
+            width: 100px;
+            
+        }
+        div.border{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height:50px;
+            width: 100px;
+            
+
+        }
+        button#quayso:hover{
+            opacity: 0.8;
+            
+            cursor: pointer;
+        }
+        div.border:hover{
+            border: 1px solid black;
+        }
+
+
+        div.banner > h1:hover{
+            color:purple;
+        }
+
+
+        ul.item > li:hover{
+            background-color: yellow;
+            width: 130px;
+            cursor: pointer;
+        }
+        ul.item > li:hover a{
+            color:red;
+        }
+
+        li a{
+            color: brown;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            let check="";
+            $("input[name='chose']").click(function(){
+                check = $("input[name='chose']:checked").val();
+                console.log(check);
+
+            });
+        
+            let flag = true;
+            $("button#quayso").click(function(){
+
+                if(check =="3-10"){
+                let so1 = Math.round((Math.random()*100)%7 + 3);
+                let so2 = Math.round((Math.random()*100)%7 + 3);
+                let so3 = Math.round((Math.random()*100)%7 + 3);
+
+                $(".so1").text(so1);
+                $(".so2").text(so2);
+                $(".so3").text(so3);
+
+
+                let res = parseInt($("span#res").text());
+                console.log(res);
+                let sum = so1 + so2 + so3;
+                console.log(sum);
+                if(flag == true){
+                    $("span#res").text(res + sum);
+                    flag=false;
+                }
+                else {
+                    $("span#res").text(res - sum);
+                    flag=true;
+                }
+                
+                
+
+                }
+                else if(check =="11-18"){
+                    let so1 = Math.round((Math.random()*100)%7 + 11);
+                    let so2 = Math.round((Math.random()*100)%7 + 11);
+                    let so3 = Math.round((Math.random()*100)%7 + 11);
+
+                    $(".so1").text(so1);
+                    $(".so2").text(so2);
+                    $(".so3").text(so3);
+
+                    let res = parseInt($("span#res").text());
+                console.log(res);
+                let sum = so1 + so2 + so3;
+                console.log(sum);
+                if(flag == true){
+                    $("span#res").text(res + sum);
+                    flag=false;
+                }
+                else {
+                    $("span#res").text(res - sum);
+                    flag=true;
+                }
+
+                }
+
+                
+                
+                
+            });
+
+            $("input#color").change(function(){
+                let color = $(this).val();
+                console.log(color);
+                $("div.number div").css("color",color);
+
+            })
+
+            
+        
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <h1>BÀI THI ỨNG DỤNG WEB</h1>
+        </div>
+        <div class="menu">
+            <div></div>
+            <div></div>
+            
+            <ul class="item" type="none">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+                
+            
+            <div class="hoten">
+                <p>2451012066 - Trương Bình Minh</p>
+
+            </div>
+        </div>
+        <div class="content">
+                <div class="number">
+                    <div class="so1">6</div>
+                    <div class="so2">6</div>
+                    <div class="so3">6</div>
+                </div>
+                <div class="doimau">
+                    <label>Đổi màu</label>
+                    <input type="color" id="color">
+                </div>
+                <div class="chon">
+                    <label>Chọn: </label>
+                    <input type="radio" name="chose" value="3-10">3-10
+                    <input type="radio" name="chose" value="11-18">11-18
+                </div>
+                <div class="quayso">
+                    <div class="border">
+                        <button id="quayso">
+                            Quay số
+                        </button>
+                    </div>
+                    
+                </div>
+                <div class="ketqua">
+                    <label>Điểm: </label>
+                    <span id="res">100</span>
+                </div>
+            </div>
+
+    </div>
+</body>
+</html>

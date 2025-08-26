@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jq.js"></script>
+    <style>
+        body{
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+            
+        }
+        div.banner{
+            height:20%;
+        }
+        div.tuade{
+            color:yellow;
+            background-image: linear-gradient(360deg ,green,black);
+            text-shadow: 2px 2px 5px black;
+            text-align: center;
+            padding: 20px 0px 50px 0px;
+            height: 80%;
+            
+        }
+        div.tuade h1{
+            margin: 0px;
+            
+        }
+        div.menu a{
+            text-decoration: none;
+            color:white;
+            font-weight: bold;
+            font-size: 20px;
+            
+        }
+
+        div.menu{
+            background-color: blue;
+            height:20%;
+        }
+
+        ul.menu{
+            margin-top: 5px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        ul.menu > li{
+            padding: 5px 0px 5px 0px
+        }
+
+        div.hoten{
+            background-color: blue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+           
+            
+        }
+        div.hoten > p{
+            color:yellow;
+            
+            font-weight: bold;
+            text-shadow: 1px 1px 5px black;
+            margin: 0px;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div.content{
+            display: flex;
+            flex-direction: row;
+            
+            
+            gap: 20px;
+            
+        }
+        div.dashboard{
+            width: 15%;
+        }
+        div.noidung{
+            border: 1px solid black;
+            width:70%;
+        }
+        div.quangcao{
+            width: 15%;
+        }
+
+        div.dashboard{
+            background-image: url("picture/green.webp");
+            background-repeat: repeat-y;
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+
+        ul.card > li {
+            color:white;
+            padding-right: 30px;
+        }
+
+        div.table{
+            margin-top:20px;
+            background-color: cadetblue;
+        }
+        div.table > h1{
+            text-align: center;
+            color:blue;
+        }
+        
+        div.quangcao{
+            background-image: url("picture/green.webp");
+            background-repeat: repeat-y;
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:20px;
+        }
+
+        div.vung{
+            background-color: antiquewhite;
+            text-align: center;
+            width: 90%;
+            margin-top: 10px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 5px black;
+            height: 40%;
+            
+        }
+        div.vung h2{
+            font-size: 15px;
+            padding-top:20px;
+        }
+        div.tuade > h1:hover{
+            color:red;
+            font-size: 50px;
+        }
+        ul.menu > li a:hover{
+            color:yellow;
+            font-size: 25px;
+        }
+        span#kqtext{
+            margin-top:10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        div.container{
+            margin: 0px;
+            height: 100%;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("button#mua").click(function(){
+                let hoten = $("#hoten").val();
+                let soluong = $("#soluong").val();
+                let chuyen = $("input[name='thanhtoan']:checked").val();
+               
+                let date = new Date($("#date").val());
+                 console.log(date);
+                let res = ""
+                
+                if(hoten==""){
+                    res += "Họ không được để trống !"
+                   
+                }
+                if(soluong==="" || parseInt(soluong) < 1){
+                    res += "<br>"+"Số lượng không được để trống và phải lớn hơn 0"
+                    
+                }
+                if(chuyen==undefined){
+                    res += "<br>"+"Bạn phải chọn 1 kiểu thanh toán"
+                    
+                }
+                if(date = "Invalid Date"){
+                    res += "<br>"+"Ngày không được để trống"
+                    
+                }
+                if(res==""){
+                    $("#myform").submit();
+                }
+                else{
+                    console.log(res);
+                    $("#kqtext").html(res);
+                }
+                
+
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <div class="tuade">
+                <h1>TRÒ CHƠI QUAY SỐ</h1>
+            </div>
+        </div>
+        <div class="menu">
+            <ul type="none" class="menu">
+                <li><a href="DEUDW20152016_trangchu.html">Trang chủ</a></li>
+                 <li><a href="DEUDW20152016_quayso.html">Giao diện số</a></li>
+                  <li><a href="DEUDW20152016_quayhinh.html">Giao diện hình</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="dashboard">
+                <ul type="disc" class="card">
+                    <li><p>C#</p></li>
+                    <li><p>PHP & MySQL</p></li>
+                    <li><p>XML</p></li>
+                    <li><p>Java</p></li>
+                    <li><p>SQL Server</p></li>
+                    <li><p>ASP.NET</p></li>
+                    <li><p>Androit</p></li>
+                    <li><p>Windows<br><p>Phone</p></p></li>
+                    
+                </ul>
+            </div>
+            <div class="noidung">
+                <div class="table">
+                    <h1>ĐĂNG KÝ MUA HÀNG</h1>
+                    <table>
+                        <form class="myform" id="myform">
+                            <tr>
+                                <td>Họ tên</td>
+                                <td><input type="text" id="hoten"></td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td><input type="email" required></td>
+                            </tr>
+                            <tr>
+                                <td>Số lượng mua</td>
+                                <td><input type="text" id="soluong"></td>
+                            </tr>
+                            <tr>
+                                <td>Ngày nhận hàng</td>
+                                <td><input type="date" id="date"></td>
+                            </tr>
+                            <tr>
+                                <td>Thanh toán</td>
+                                <td><input type="radio" name="thanhtoan">Chuyển khoản
+                                    <input type="radio" name="thanhtoan">Trực tiếp khi giao hàng
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button id="mua">Đăng ký mua</button>
+                                    <button type="reset">Xoá</button>
+                                </td>
+                            </tr>
+                        </form>
+                    </table>
+                </div>
+
+                <span id="kqtext"></span>
+                
+
+            </div>
+            <div class="quangcao">
+                <div class="vung">
+                    <h2>Vùng quảng cáo 1</h2>
+                </div>
+                <div class="vung">
+                    <h2>Vùng quảng cáo 2</h2>
+                </div>
+            </div>
+        </div>
+        <div class="hoten">
+            <p>2451012066 - Trương Bình Minh - B34</p>
+    </div>
+        
+        
+    </div>
+    
+
+</body>
+</html>

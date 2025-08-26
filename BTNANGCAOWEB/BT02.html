@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+    <style>
+        
+        div#frame{
+            border: 1px solid black;
+            
+            background-color: gray;
+            
+            margin-left: 50px;
+            margin-top: 50px;
+            margin-right: 50px;
+            height:400px;
+            position: relative;
+        }
+        #ball{
+            width: 50px;
+            height: 50px;
+            left: 100px;
+            top: 100px;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        let ballWidth; // chieu rong hinh
+        let ballHeight; //chieu cao hinh
+        let dx = 5; //do doi ngang khi di chuyen
+        let dy= 7; //do doi doc khi di chuyen
+        $(document).ready(function(){
+            //lay kich thuoc hinh
+            ballWidth = $("#ball").width();
+            ballHeight = $("#ball").height();
+            setInterval(Play,100);
+        });
+        
+        function Play(){
+            let frameW = $("#frame").width();
+            let frameH = $("#frame").height();
+            console.log(frameH);
+            let ballLeft = parseInt($("#ball").css("left"));
+            let ballTop = parseInt($("#ball").css("top"));
+            if(ballLeft < 0 || (ballLeft + ballWidth) >= frameW){
+                dx = -dx;
+            }
+            if(ballTop <= 0 || (ballTop + ballHeight) > frameH){
+                dy = -dy;
+            }
+            $("#ball").css("left",ballLeft + dx + "px");
+            $("#ball").css("top",ballTop + dy + "px");
+        }
+        
+    </script>
+</head>
+<body>
+    <div id="frame">
+        <img id="ball" src="picture/summer-cartoon-clipart-sticker-ball-isolated-free-png.webp">
+    </div>
+    
+</body>
+</html>

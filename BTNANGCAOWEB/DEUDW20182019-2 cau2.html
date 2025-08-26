@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jq.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0px;
+        }
+        div.banner{
+            background-color: hsl(199, 100%, 50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid white;
+        }
+        div.banner h1{
+            margin:0px;
+            color:yellow;
+            text-shadow: 3px 3px 5px red;
+            font-weight: 900;
+
+        }
+        div.banner p {
+            color:white;
+            font-size: large;
+            margin: 0px;
+        }
+        div.menu{
+            background-color: rgba(4, 126, 197, 0.747);
+            height:30px;
+           
+        }
+
+        ul.card{
+            margin: 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+            height: 30px;
+            
+        }
+
+        ul.card > li a{
+            text-decoration: none;
+            color:white;
+
+        }
+        ul.card > li {
+            background-color: rgba(4, 145, 145, 0.829);
+            border: 1px dotted white;
+            width: 100px;
+            text-align: center;
+            height:30px;
+            padding-top:5px;
+        }
+
+        ul.submenu{
+            position: absolute;
+            background-color: rgba(4, 145, 145, 0.829);
+            padding: 0px;
+            display: none;
+            width: 120px;
+        }
+        ul.submenu > li{
+            border: 1px dotted white;
+            text-align: left;
+        }
+
+        ul.card > li:hover ul.submenu {
+            display: block;
+        }
+        
+        div.content{
+            margin: 0px;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        div.tennn{
+            background-color: lightblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 10%;
+            
+        }
+
+        div.vung{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            border-radius: 20px;
+            box-shadow: 3px 3px 3px black;
+            margin-top: 20px;
+            background-color: antiquewhite;
+            height: 100px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        
+        
+
+        div.copyright{
+            background-color: rgba(4, 126, 197, 0.747);
+            color: yellow;
+            margin:0px;
+            
+        }
+        div.copyright > p{
+            text-align: center;
+            margin: 0px auto;
+        }
+        
+        div.border{
+            display: flex;
+            flex-direction: row;
+            gap:15px;
+        }
+
+        div.img{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            
+            border: 1px dotted black;
+
+        }
+        div.img > img {
+            width: 100%;
+
+        }
+        div.noidung{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 50%;
+        }
+        div.text{
+            border: 1px dotted black;
+            height: 100%;
+        }
+
+        div.javaimg{
+            border: 1px dotted black;
+            height: 100%;
+        }
+        div.javaimg > img{
+            width: 100%;
+            height: 100%;
+        }
+        div.text >p:first-child::first-letter{
+            font-size: 50px;
+        }
+        div.text p{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        ul.card > li:hover{
+            opacity: 0.9;
+            
+        }
+        
+        ul.submenu > li:hover{
+            opacity: 0.8;
+        }
+
+        ul.submenu{
+            position: absolute;
+            background-color: rgba(4, 145, 145, 0.829);
+            padding: 0px;
+            display: none;
+            width: 120px;
+           
+        }
+       
+        div.img{
+            transition: opacity 1s linear;
+        }
+        div.img:hover{
+            opacity: 0.5;
+        }
+        div.img > img{
+            z-index: -1;
+        }
+
+        div.javaimg{
+            transition: opacity 2s linear;
+        }
+        div.javaimg:hover{
+            opacity: 0.5;
+        }
+        div.kq{
+            display: flex  ;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        div.text2{
+            width: 90%;
+        }
+        div.text2 > h1{
+            text-align: center;
+        }
+        div.input{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap:20%;
+        }
+        textarea{
+            background-color: antiquewhite;
+            height: 150px;
+            width: 300px;
+            margin:10px;
+            border:1px solid black;
+            font-weight: bold;
+            font-size: 25px;
+            
+        }
+        div.kq > button{
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("button#mahoa").click(function(){
+                let text = $("textarea#text1").val();
+                console.log(text);
+                
+                
+                let len = text.length;
+                
+                //1: 49
+                //9: 57
+                
+
+                let res = [];
+                for(let i = 0 ; i < text.length ; i++){
+                    
+                        res[i]= text.charCodeAt(i);                    
+
+                }
+                console.log(res);
+                
+                let str = "";
+                for(let i = 0 ; i < res.length ; i++){
+                    if(String.fromCharCode(res[i])!=" "){
+                        res[i]=res[i]+1
+                    }
+                    if((res[i]-1>=65 && res[i]-1<=90) && res[i] > 90 && String.fromCharCode(res[i])!=" "){
+                        res[i]=65;
+                    }
+                    if((res[i]-1>= 97 && res[i]-1<=122) && res[i] > 122 && String.fromCharCode(res[i])!=" " ){
+                        res[i]=97;
+                    }
+                    if((res[i]-1>=48 && res[i]-1 <=57) && res[i] >57 && String.fromCharCode(res[i])!=" " ){
+                        res[i]=48;
+                    }
+
+                    let token = String.fromCharCode(res[i]);
+                    str += token;
+                }
+
+                console.log(str);
+
+                $("#text2").val(str);
+            });
+
+            $("button#giaima").click(function(){
+                let text = $("textarea#text2").val();
+                console.log(text);
+                
+                
+                let len = text.length;
+                
+                //1: 49
+                //9: 57
+                
+
+                let res = [];
+                for(let i = 0 ; i < text.length ; i++){
+                    
+                        res[i]= text.charCodeAt(i);                    
+
+                }
+                console.log(res);
+                
+                let str = "";
+                for(let i = 0 ; i < res.length ; i++){
+                    if(String.fromCharCode(res[i])!=" "){
+                        res[i]=res[i]-1;
+                    }
+
+                    if((res[i]+1>=65 && res[i]+1<=90) && res[i] < 65 && String.fromCharCode(res[i])!=" "){
+                        res[i]=90;
+                    }
+                    if((res[i]+1>= 97 && res[i]+1<=122) && res[i] < 97 && String.fromCharCode(res[i])!=" " ){
+                        res[i]=122;
+                    }
+                    if((res[i]+1>=48 && res[i]+1 <=57) && res[i] <48 && String.fromCharCode(res[i])!=" " ){
+                        res[i]=57;
+                    }
+
+                    let token = String.fromCharCode(res[i]);
+                    str += token;
+                }
+
+                console.log(str);
+
+                $("#text1").val(str);
+            });
+
+             $("div.vung").mouseover(function(){
+                $(this).addClass("bluebg");
+            })
+            .mouseout(function(){
+                $(this).removeClass("bluebg");
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <div class="tuade"><h1>BÀI THI ỨNG DỤNG WEB</h1></div>
+            <div class="hoten"><p>MSSV: 2451012066 - Họ tên: Trương Bình Minh</p></div>
+        </div>
+        <div class="menu">
+            <ul class="card" type="none">
+                <li><a href="DEUDW20182019-2 cau1.html">Câu 1</a></li>
+                <li><a href="#">Tin Tức</a>
+                    <ul class="submenu" type="none">
+                        <li><a href="#">Công nghệ</a></li>
+                        <li><a href="#">Phần mềm</a></li>
+                        <li><a href="#">Phần cứng</a></li>
+                        <li><a href="#">Việc làm</a></li>
+                    </ul>
+                </li>
+                <li><a href="DEUDW20182019-2 cau2.html">Câu 2</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="tennn">
+                <div class="vung"><h2>HTML</h2></div>
+                <div class="vung"><h2>CSS</h2></div>
+                <div class="vung"><h2>JS</h2></div>
+            </div>
+            
+            <div class="text2">
+                <h1>CHƯƠNG TRÌNH MÃ HOÁ CHUỖI</h1>
+                <div class="input">
+                    <div class="kq">
+                        <h3>Chuỗi ban đầu</h3>
+                        <textarea id="text1" cols="50" rows="10"></textarea>
+                        <button id="mahoa">Mã hoá</button>
+                    </div>
+                    <div class="kq">
+                        <h3>Chuỗi đã mã hoá</h3>
+                        <textarea id="text2" cols="50" rows="10"></textarea>
+                        <button id="giaima">Giải mã</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="copyright">
+            <p>Copyright 2019</p>
+        </div>
+
+    </div>
+</body>
+</html>

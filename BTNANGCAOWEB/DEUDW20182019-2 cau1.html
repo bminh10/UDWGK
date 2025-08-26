@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jq.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0px;
+        }
+        div.banner{
+            background-color: hsl(199, 100%, 50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid white;
+        }
+        div.banner h1{
+            margin:0px;
+            color:yellow;
+            text-shadow: 3px 3px 5px red;
+            font-weight: 900;
+
+        }
+        div.banner p {
+            color:white;
+            font-size: large;
+            margin: 0px;
+        }
+        div.menu{
+            background-color: rgba(4, 126, 197, 0.747);
+            height:30px;
+           
+        }
+
+        ul.card{
+            margin: 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap:10px;
+            height: 30px;
+            
+        }
+
+        ul.card > li a{
+            text-decoration: none;
+            color:white;
+
+        }
+        ul.card > li {
+            background-color: rgba(4, 145, 145, 0.829);
+            border: 1px dotted white;
+            width: 100px;
+            text-align: center;
+            height:30px;
+            padding-top:5px;
+        }
+
+        ul.submenu{
+            position: absolute;
+            background-color: rgba(4, 145, 145, 0.829);
+            padding: 0px;
+            display: none;
+            width: 120px;
+        }
+        ul.submenu > li{
+            border: 1px dotted white;
+            text-align: left;
+        }
+
+        ul.card > li:hover ul.submenu {
+            display: block;
+        }
+        
+        div.content{
+            margin: 0px;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        div.tennn{
+            background-color: lightblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 30%;
+        }
+        div.vung{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            border-radius: 20px;
+            box-shadow: 3px 3px 3px black;
+            margin-top: 20px;
+            background-color: antiquewhite;
+            height: 100px;
+            width: 80%;
+        }
+        
+        
+
+        div.copyright{
+            background-color: rgba(4, 126, 197, 0.747);
+            color: yellow;
+            margin:0px;
+            
+        }
+        div.copyright > p{
+            text-align: center;
+            margin: 0px auto;
+        }
+        
+        div.border{
+            display: flex;
+            flex-direction: row;
+            gap:15px;
+        }
+
+        div.img{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            
+            border: 1px dotted black;
+
+        }
+        div.img > img {
+            width: 100%;
+
+        }
+        div.noidung{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 50%;
+        }
+        div.text{
+            border: 1px dotted black;
+            height: 100%;
+        }
+
+        div.javaimg{
+            border: 1px dotted black;
+            height: 100%;
+        }
+        div.javaimg > img{
+            width: 100%;
+            height: 100%;
+        }
+        div.text >p:first-child::first-letter{
+            font-size: 50px;
+        }
+        div.text p{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        ul.card > li:hover{
+            opacity: 0.9;
+            
+        }
+        
+        ul.submenu > li:hover{
+            opacity: 0.8;
+        }
+
+        ul.submenu{
+            position: absolute;
+            background-color: rgba(4, 145, 145, 0.829);
+            padding: 0px;
+            display: none;
+            width: 120px;
+           
+        }
+       
+        div.img{
+            transition: opacity 1s linear;
+        }
+        div.img:hover{
+            opacity: 0.5;
+        }
+        div.img > img{
+            z-index: -1;
+        }
+
+        div.javaimg{
+            transition: opacity 2s linear;
+        }
+        div.javaimg:hover{
+            opacity: 0.5;
+        }
+        .bluebg{
+            color:white;
+            background-color: blue !important; 
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            $("div.vung").mouseover(function(){
+                $(this).addClass("bluebg");
+            })
+            .mouseout(function(){
+                $(this).removeClass("bluebg");
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <div class="tuade"><h1>BÀI THI ỨNG DỤNG WEB</h1></div>
+            <div class="hoten"><p>MSSV: 2451012066 - Họ tên: Trương Bình Minh</p></div>
+        </div>
+        <div class="menu">
+            <ul class="card" type="none">
+                <li><a href="DEUDW20182019-2 cau1.html">Câu 1</a></li>
+                <li><a href="#">Tin Tức</a>
+                    <ul class="submenu" type="none">
+                        <li><a href="#">Công nghệ</a></li>
+                        <li><a href="#">Phần mềm</a></li>
+                        <li><a href="#">Phần cứng</a></li>
+                        <li><a href="#">Việc làm</a></li>
+                    </ul>
+                </li>
+                <li><a href="DEUDW20182019-2 cau2.html">Câu 2</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <div class="tennn">
+                <div class="vung"><h2>HTML</h2></div>
+                <div class="vung"><h2>CSS</h2></div>
+                <div class="vung"><h2>JS</h2></div>
+            </div>
+            <div class="border">
+                <div class="img">
+                <img src="picture/HTML5.png">
+                </div>
+                <div class="noidung">
+                    <div class="text">
+                        <p><b>HTML(Hypertext Markup Language) là một ngôn ngữ đánh</b> dấu siêu văn bản, được dùng để tạo ra hầu hết các trang web mà chúng ta có thể thấy hiển thị trên trình duyệt.</p>
+                        <p>HTML là một tập tin văn bản có phần mở rộng là .htm hoặc .html</p>
+                        <p>Nội dung tập tin HTML chứa các thẻ (còn gọi là tag) với các thuộc tính được dùng để trình bày hình thức và nội dung của trang web</p>
+                    </div>
+                    <div class="javaimg">
+                        <img src="picture/java.webp">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="copyright">
+            <p>Copyright 2019</p>
+        </div>
+
+    </div>
+</body>
+</html>

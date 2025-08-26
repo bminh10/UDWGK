@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: wheat;
+        }
+        div.banner{
+            background-color: cyan;
+            display: flex;
+            flex-direction: row;
+            
+            justify-content: space-between;
+            
+        }
+        
+        div.banner > div img{
+            width:50%;
+            
+            
+        }
+        div.tieude > h1{
+            color: yellow;
+            text-shadow: 2px 2px 5px red;
+            
+        }
+        div.tieude{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+        div.sign{
+            width:30%;
+            text-align: right;
+            padding-right: 20px;
+        }
+        div.sign > a{
+            color:white;
+            font-weight: bold;
+            
+        }
+       nav.item{
+        background-color: green;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height:35px;
+       }
+       nav.item>ul{
+        height:10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       }
+       
+       li > a{
+        text-decoration: none;
+        color:yellow;
+        font-weight: bold;
+        padding-left: 20px;
+        display: block;
+        
+       }
+       
+       div.search > input {
+        height: 100%;
+       }
+
+       div.search > button{
+            position: absolute;
+            right: 1px;
+            height: 35px;
+       }
+       nav.item > ul li > ul{
+            position: absolute;
+            display: none;
+            padding: 0px;
+            background-color: green;
+            border-radius: 15px;
+       }
+       ul.type > li{
+            padding-top: 10px;
+            
+       }
+       
+       ul.type > li a{
+        color:white;
+        
+       }
+       
+       
+       nav.item > ul > li:hover ul{
+            display: block;
+       }
+        ul.type > li a:hover{
+            color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <div class="img"><img src="picture/comp.webp"></div>
+            <div class="tieude"><h1>CÔNG TY MÁY TÍNH ABC</h1></div>
+            <div class="sign"><a href="#">Đăng nhập</a>
+                <a href="#">Đăng ký</a>
+                <a href="#">Giỏ hàng</a>
+            </div>
+        </div>
+
+        <nav class="item">
+            <ul type="none">
+                <li><a href="#">TRANG CHỦ</a></li>
+                <li><a href="#">GIỚI THIỆU</a></li>
+                <li><a href="#">DỊCH VỤ</a>
+                    <ul class="type" type="none">
+                        <li><a href="#">Bảo hành</a></li>
+                        <li><a href="#">Bảo trì</a></li>
+                        <li><a href="#">Đổi trả</a></li>
+                        <li><a href="#">Sữa chữa tại nhà</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">LIÊN HỆ</a></li>
+            </ul>
+            <div class="search"><input type="text"><button>Tìm</button></div>
+            
+        </nav>
+    </div>
+</body>
+</html>

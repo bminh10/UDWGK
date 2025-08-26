@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+    
+    <style>
+        body{
+            margin: 0px;
+        }
+        div.tieude{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        div.tieude h1{
+            color:blue
+        }
+        div.tieude span{
+            color: green;
+            font-weight: 900;
+            
+        }
+
+        div.race{
+            border: 3px solid brown;
+            height: 455px;
+            width: 100%;
+            position: relative;
+        }
+        img{
+            display: block;
+            width: 150px;
+            height: 150px;
+            position: relative;
+            
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            let dx1 =  Math.round(Math.random()*100);
+            let dx2 = Math.round(Math.random()*100);
+            let dx3 = Math.round(Math.random()*100);
+            let imgWidth1;
+            let imgWidth2;
+            let imgWidth3;
+            $("button#play").click(function(){
+                dx1 = Math.round(Math.random()*100);
+                 dx2 = Math.round(Math.random()*100);
+                 dx3 = Math.round(Math.random()*100);
+                imgWidth1 = $("img#ngua").width();
+                imgWidth2 = $("img#tho").width();
+                imgWidth3 = $("img#rua").width();
+                cuocdua = setInterval(Play,100); //dat id de xoa interval
+            });
+            let flag = false;
+            let a = [];
+            function Play(){
+                let raceW = $("div.race").width();
+                
+                let imgLeft1 = parseInt($("img#ngua").css("left"));
+                let imgLeft2 = parseInt($("img#tho").css("left"));
+                let imgLeft3 = parseInt($("img#rua").css("left"));
+                if(flag ==false){
+                    a.push(imgLeft1);
+                    a.push(imgLeft2);
+                    a.push(imgLeft3);
+                    flag=true;
+                }
+                 console.log(imgLeft1)
+                let change1= imgLeft1 + imgWidth1;
+                let change2= imgLeft2 + imgWidth2;
+                let change3= imgLeft3 + imgWidth3;
+
+                if(change1 >= raceW || change2 >= raceW || change3 >=raceW){
+                    if(change1 >= raceW){
+                        $("span#kq").text("---Kết quả: Ngựa thắng!");
+                    }
+                    else if(change2 >= raceW){
+                        $("span#kq").text("---Kết quả: Thỏ thắng!");
+                    }
+                    else if(change3>=raceW){
+                        $("span#kq").text("---Kết quả: Rùa thắng!");
+                    }
+                    event.preventDefault();
+                }
+                else{
+                    $("img#ngua").css("left", imgLeft1 + dx1 +"px");
+                    $("img#tho").css("left", imgLeft2 + dx2 +"px");
+                    $("img#rua").css("left", imgLeft3 + dx3 + "px");
+                }
+
+            }
+            $("button#stop").click(function(){
+                clearInterval(cuocdua);
+                dx1 = Math.round(Math.random()*100);
+                dx2 = Math.round(Math.random()*100);
+                dx3 = Math.round(Math.random()*100);
+            });
+
+            $("button#reset").click(function(){
+                if(flag==true && a.length >0){
+                    $("img#rua").css("left",a.pop());
+                    $("img#tho").css("left",a.pop());
+                    $("img#ngua").css("left",a.pop());
+                    flag=false;
+                    $("span#kq").text("");
+                }
+                clearInterval(cuocdua);
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <div class="tieude">
+        <h1>CUỘC ĐUA KỲ THÚ</h1>
+        <span>Ngựa - Rùa - Thỏ</span>
+        <span id="kq"></span>
+    </div>
+    <div class="race">
+        <img id="ngua" src="picture/Ngua.png">
+        <img id="tho" src="picture/rabbit.webp">
+        <img id="rua"  src="picture/turtle.webp">
+    </div>
+    <button id="play">Play</button>
+    <button id="stop">Stop</button>
+    <button id="reset">reset</button>
+</body>
+</html>

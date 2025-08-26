@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: lightblue;
+            margin: 0px;
+        }
+        div.container{
+            margin: 100px;
+        }
+        div.play, div.stop{
+            background-color: blue;
+            display: inline-block;
+            font-size: 20px;
+            color: white;
+            border: 1px solid black;
+            width: 70px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        button{
+             background-color: blue;
+             border: none;
+             cursor: pointer;
+        }
+        div.khung{
+            background-color: gray;
+            height:500px;
+            width: 500px;
+        }
+
+
+        div.banner{
+            position: relative;
+            background-color: blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            height:40px;
+            width: 500px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+        
+        #footer {
+            position: relative;
+            
+        }
+
+
+
+    </style>
+
+    <script>
+
+
+
+
+
+        let doingang = -10;
+        let ballWidth;
+        let ballHeight;
+        let footerWidth;
+        let dx =10;
+        let dy = 10;
+        $(document).ready(function(){
+            $("button#play").click(function(){
+                ballHeight = $("#ball").height();
+                ballWidth = $("#ball").width();
+                
+                play = setInterval(Play,100);
+            });
+            
+            footerWidth = $("#footer").width();
+            movespan = setInterval(Move,80);
+
+            $("div#banner").mouseover(function(){
+                clearInterval(movespan);
+            })
+            .mouseout(function(){
+                movespan = setInterval(Move,100);
+            });
+            $("button#stop").click(function(){
+                clearInterval(play);
+            });
+
+        });
+        function Play(){
+            let khungW = $("div.khung").width();
+            let khungH = $("div.khung").height();
+            
+            let ballLeft = parseInt($("img#ball").css("left"));
+            let ballTop = parseInt($("img#ball").css("top"));
+            console.log(ballLeft);
+            console.log(ballTop);
+            if(ballLeft < 0 || (ballLeft + ballWidth)>= khungW){
+                dx = -dx;
+            }
+            if(ballTop <= 0 || (ballTop+ballHeight) > khungH ){
+                dy=-dy;
+            }
+            $("#ball").css("left",ballLeft+dx +"px");
+            $("#ball").css("top",ballTop + dy +"px");
+
+            
+
+
+        }
+
+        function Move(){
+            let divW = $("div#banner").width();
+
+            let spanLeft = parseInt($("#footer").css("left"));
+            let change = spanLeft+footerWidth;
+            if(change <= 0){
+                $("#footer").css("left",change+150 + "px");
+                
+            }
+            else{
+                $("#footer").css("left",spanLeft + doingang + "px");
+            }
+
+        }
+
+        
+        
+
+
+        
+
+    </script>
+
+
+</head>
+<body>
+    <div class=container>
+        <div class="play"><button id="play">Play</button></div>
+        <div class="stop"><button id="stop">Stop</button></div>
+        
+        <div class="khung">
+            <img id="ball" src="picture/summer-cartoon-clipart-sticker-ball-isolated-free-png.webp">
+        </div>
+
+        <div id="banner" class="banner">
+            <span id="footer" class="move">Welcome to Football!!!</span>
+        </div>
+
+    </div>
+    
+
+</body>
+</html>
