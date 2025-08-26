@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <caption><h1>CHƯƠNG TRÌNH XỬ LÝ CHUỖI</h1></caption>
+        <tr>
+            <td><label>Chuỗi S1:</label></td>
+            <td><input type="text" id="s1" required></td>
+        </tr>
+        <tr>
+            <td><label>Chuỗi S2: </label></td>
+            <td><input type="text" id="s2"></td>
+        </tr>
+        <tr>
+            <td><label>Chuỗi S3:</label></td>
+            <td><input type="text" id="s3"></td>
+        </tr>
+        <tr>
+            <td><label>Vị trí chèn:</label></td>
+            <td><input type="number" min="0" id="num"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button id="normal">Chuẩn hoá chuỗi</button>
+                <button id="reset">Khôi phục</button>
+                <button id="reverse">Đảo chuỗi</button>
+            </td>
+            
+        </tr>
+        <tr>
+            <td></td>
+            <td><button id="replace">Thay thế S2 bằng S3</button>
+                <button id="ins">Chèn S2 vào S1</button>
+                <button id="del">Xoá S2 trong S1</button>
+            </td>
+            
+        </tr>
+
+    </table>
+    
+    <script>
+        //khoi phuc chuoi s1
+        let re = "";
+        //câu lệnh chạy mỗi lần giá trị trong ô input thay đổi
+        //ghi đè nội dung input vào biến re
+        document.getElementById("s1").addEventListener("input", (e) => {
+         re = e.target.value; //e.target.value là giá trị hiện tại trong ô input đó.
+        });
+        //reset về s1 ban đầu input
+        document.getElementById("reset").addEventListener("click", () => {
+        document.getElementById("s1").value = re;
+        });
+
+        
+        
+        
+
+
+        //dao chuoi
+        document.getElementById("reverse").addEventListener("click",()=>{
+            let s = document.getElementById("s1").value;
+            
+            let arr=s.split(" ");
+            
+            /*for(let i = 0 ; i < arr.length/2; i++ ){
+                let c = arr[i];
+                arr[i]=arr[arr.length-1-i];
+                arr[arr.length-1-i]=c;
+            }*/
+            arr.reverse();
+            document.getElementById("s1").value=arr.join(" ");
+        });
+        //chuan hoa chuoi
+        document.getElementById("normal").addEventListener("click", ()=>{
+            let s = document.getElementById("s1").value.trim();
+            let arr = s.split(" ");
+            let kq =new String();
+            for(let i = 0 ; i < arr.length ; i++){
+                let tmp = arr[i].toLowerCase().trim();
+                //neu chuoi chi co khoang trang thi tat ca se thanh rong khi trim
+                if(tmp!="" ){
+                    tmp = tmp.substr(0,1).toUpperCase() + tmp.substr(1);
+                    kq+= tmp;
+                    if(i+1 < arr.length){
+                        kq+= " ";
+                    }
+                }
+
+            }
+            document.getElementById("s1").value = kq;
+
+        });
+        
+        //thay the chuoi
+        document.getElementById("replace").addEventListener("click",()=>{
+            let s1 = document.getElementById("s1").value;
+            let s2 = document.getElementById("s2").value;
+            let s3 = document.getElementById("s3").value;
+            //cach 1: dung for
+            /*for(let i = 0 ; i < s1.length ; i++){
+                s1 = s1.replace(s2,s3);
+            }*/
+
+            //cach 2
+            s1 = s1.replace(new RegExp(s2,"g"),s3);
+           
+            document.getElementById("s1").value = s1;
+
+        });
+        
+        //chen s2 vao s1
+        document.getElementById("ins").addEventListener("click",(event)=>{
+            
+            let pos = document.getElementById("num").value;
+            if(parseInt(pos)<0 || pos ==""){
+                alert("pos khong duoc < 0 ! ");
+                document.getElementById("num").value="";
+                event.preventDefault();
+            }
+
+            let s1 = document.getElementById("s1").value;
+            let s2= document.getElementById("s2").value;
+            if(s2==""){
+                alert("Ban phai nhap chuoi s2 ! ");
+                event.preventDefault();
+            }
+            let kq="";
+            let len = s1.length;
+            for(let i = 0 ; i < len ; i++){
+                if(i==pos){
+                    kq+=s2;
+                }
+                
+                kq += s1[i];
+            }
+            document.getElementById("s1").value = kq;
+           
+        });
+        //xoa s2 trong s1
+        document.getElementById("del").addEventListener("click",(e)=>{
+            let s2= document.getElementById("s2").value;
+            if(s2==""){
+                alert("Ban phai nhap s2 de dung chuc nang nay ! ");
+                e.preventDefault();
+            }
+            let s1 = document.getElementById("s1").value;
+            //vua doi sanh tat ca ket qua phu hop, vua khong phan biet chu in hoa va thuong
+            s1 = s1.replace(new RegExp(s2,"gi"),"");
+            document.getElementById("s1").value = s1;
+        });
+
+
+    </script>
+</body>
+</html>

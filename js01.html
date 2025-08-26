@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bang cuu chuong</title>
+    <style>
+        table{
+            border-collapse: separate;
+            font-size: large;
+            border:2px solid black;
+        
+        }
+        td{
+            border:2px solid black;
+            padding: 0px 20px 0px 20px;
+        }
+        caption{
+            font-weight: bold;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        let html = "<table><caption>BẢNG CỬU CHƯƠNG</caption>";
+        let count = 2;
+        for(let row = 1; row <= 2 ;row++){
+            html+="<tr>";
+            for(let col = 1; col <= 4 ; col++){
+                html+="<td>";
+                for(let j = 2 ; j <= 9 ; j++){
+                    html+= count + "x" + j + "=" + count*j + "</br>" ;
+                }
+                count++;
+                html +="</td>";
+            }
+            html+="</tr>";
+        }
+        html += "</table>";
+        document.write(html);
+    </script>
+</body>
+</html>

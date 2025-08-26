@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    div.container{
+        
+        border-radius: 20px;
+        background-color: antiquewhite;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 700px;
+    }
+
+    div.info{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    button{
+        cursor: pointer;
+    }
+    .info img{
+        margin-top: 50px;
+        border-radius: 100px;
+        width: 200px;
+        height: 200px;
+        border: 2px solid black
+    }
+    .info h2{
+        margin-top: 50px;
+        font-size: 30px;
+    }
+
+    .info p{
+        opacity: 0.6;
+        text-align: center;
+    }
+    hr{
+        border: 1px solid sandybrown
+    }
+    div.skill{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    div.language{
+        display: inline-block;
+        background-color: blue;
+        border-radius: 50px;
+        width: 70px;
+        text-align: center;
+        color: white;
+       
+    }
+    div.addskill{
+        display: flex;
+        justify-content: center;
+    }
+    button.themkynang {
+        border-radius: 50px;
+        text-align: center;
+        border: 0px;
+        background-color: blue;
+        color: white;
+        height:40px;
+        width: 100px;
+        margin-top: 20px;
+        
+    }
+    
+    div.exp{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .exp button{
+        border-radius: 50px;
+        border: 0px;
+        background-color: blue;
+        text-align: center;
+        color: white;
+        height: 40px;
+    }
+    fieldset{
+        border: 1px solid black;
+    }
+    .hocvan h4{
+        margin-bottom: 0px;
+    }
+    p.date{
+        margin-top: 0px;
+        opacity: 0.5;
+    }
+    p.nganh{
+        margin-bottom: 50px;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="info">
+            <img src="Images/Images/William_Sydney_Porter.jpg">
+            <h2>Nguyễn Văn A</h2>
+            <p>Email: nguyen.vana@example.com | Điện thoại: 0123 456 789</p>
+        </div>
+        <div class="skill">
+            <div class="kynang">
+                <h3>Kỹ năng</h3>
+                <hr>
+            <div id="cha">
+                <div class="language">
+                <p>HTML</p>
+                </div>
+                <div class="language">
+                <p>CSS</p>
+                </div>
+                <div class="language">
+                <p>JS</p>
+                </div>
+            </div>
+           
+           
+            
+            <div class="addskill">
+                <button type="button" class="themkynang" id="themkynang">Thêm kỹ năng</button>
+            </div>
+        </div>
+        <div class="kinhnghiem">
+            <h3>Kinh nghiệm làm việc</h3>
+            <hr>
+            <dl id="exp">
+                <dt><h4>Frontend Devloper tại Công ty ABC</h4>
+                    <dd>2018 - 2022 - Phát triển giao dện web và ứng dụng mobile</dd>
+                </dt>
+                 <dt><h4>Frontend Devloper tại Công ty ABC</h4>
+                    <dd>2022 - 2024 - Quản lý dự án phần mềm</dd>
+                </dt>
+
+            </dl>
+
+            <form id="themexp">
+                <fieldset>
+                    <legend>Thêm kinh nghiệm</legend>
+                    <label>Kinh nghiệm</label>
+                    <br>
+                    <input type="text" name="kinhnghiem">
+                    <br>
+                    <label>Mô tả:</label>
+                    <br>
+                    <input type="text"  size="50px" name="mota">
+                    <br>
+                    
+                </fieldset>
+            </form>
+            <div class="exp">
+                        <button class="themkinhnghiem" id="themkinhnghiem">Thêm kinh nghiệm</button>
+            </div>
+            
+        </div>
+        <div class="hocvan">
+            <h3>Học vấn</h3>
+            <hr>
+            <h4>Đại học công nghệ </h4>
+            <p class="date">2017-2021</p>
+            <p class="nganh">Ngành công nghệ thông tin</p>
+        </div>
+        </div>
+        
+
+    </div>
+
+
+    <script>
+        document.getElementById("themkynang").addEventListener("click",(e)=>{
+            
+            let p = prompt("Nhập kỹ năng mới") //*;
+            if(p==="" || p==null){
+                alert("Khong duoc de trong noi dung !");
+                e.preventDefault();
+                return;
+            }
+            else{
+                //láy div cha
+            let div = document.getElementById("cha");
+            //tạo thẻ p mới
+            let text = document.createElement("p");
+            //tạo nội dung
+            let contain = document.createTextNode(p) //p trong textNođe là của *;
+            //thêm nội dungg vào thẻ p
+            text.appendChild(contain);
+            //tạo div mới
+            let newDiv = document.createElement("div");
+            //đặt tên class cho div mới
+            newDiv.className="language";
+            //thêm thẻ p trong biến text vào div mới
+            newDiv.appendChild(text);
+            //thêm sau phần tử con cuối cùng của div cha
+            div.appendChild(newDiv);
+            }
+            //kiem tra trung
+            
+        }); 
+
+        document.getElementById("themkinhnghiem").addEventListener("click",()=>{
+            
+            let kn = document.forms.themexp["kinhnghiem"].value;
+
+            let mt = document.forms.themexp["mota"].value;
+
+            console.log(kn);
+            let newdd = document.createElement("dd");
+            let ddtext = document.createTextNode(mt);
+            newdd.appendChild(ddtext);
+
+            let newh4 = document.createElement("h4");
+            let newtexth4 = document.createTextNode(kn);
+            newh4.appendChild(newtexth4);
+
+            let newdt=document.createElement("dt");
+            newdt.appendChild(newh4);
+            newdt.appendChild(newdd);
+            
+            let cha = document.getElementById("exp");
+            cha.appendChild(newdt);
+        });
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border:1px solid black;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption><h2>ĐĂNG KÝ THÀNH VIÊN</h2></caption>
+        <form id="myform">
+            <tr>
+                <td><label>Tên đăng nhập</label></td>
+                <td><input type="text" name="text1" required></td>
+            </tr>
+            <tr>
+                <td><label>Mật khẩu</label></td>
+                <td><input type="text" name="text2"></td>
+            </tr>
+            <tr>
+                <td><label>Ngày sinh</label></td>
+                <td><input type="date" name="text3"></td>
+                
+            </tr>
+            <tr>
+                <td><label>Giới tính</label></td>
+                <td><input type="radio" name="text4" checked>Nam
+                    <input type="radio" name="text4" >Nữ
+                </td>
+            </tr>
+            <tr>
+                <td><label>Vấn đề bạn quan tâm</label></td>
+                <td><input name="opt" type="text" list="care">
+                    <datalist id="care">
+                        <option>Kinh Tế</option>
+                        <option>Thể thao</option>
+                        <option>Văn học nghệ thuật</option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td><button id="submit">Đăng ký</button></td>
+                <td><button onreset>Huỷ</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><textarea id="kq" name="kq" row="4" col="12"></textarea></td>
+            </tr>
+        </form>
+    </table>
+    <script>
+        document.getElementById("myform").addEventListener("submit",(e)=>{
+            //chặn load trang
+            e.preventDefault();
+            let ten = document.forms["myform"]["text1"].value;
+            let mk = document.forms["myform"]["text2"].value;
+
+            let d = document.forms.myform["text3"].value;
+
+            let gt = document.forms.myform["text4"].value;
+            let qt = document.forms.myform["opt"].value;
+            document.forms.myform["kq"].value = "Chào mừng " + ten 
+            + "\nMật khẩu bạn dài: " + mk.length + "\nVấn dề bạn quan tâm: " + qt;
+            
+
+        });
+    </script>
+</body>
+</html>

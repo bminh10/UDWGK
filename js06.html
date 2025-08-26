@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+    <style>
+        table.bang{
+            border: 1px solid black;
+            border-collapse: separate;
+            width: 500px;
+        }
+        th{
+            border: 1px solid black;
+        }
+        h2{
+            margin-top:0px;
+        }
+        td{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <table class="bang">
+        <form id="freg">
+        <tr>
+            <th colspan="2"><h2>CÁC PHÉP TOÁN SỐ HỌC</h2></th>
+        </tr>
+        <tr>
+            
+           <td> <label>Số thứ 1</label></td>
+           <td><input name="num1" type="text"></td>
+        </tr>
+        
+        <tr>
+            <td><label>Số thứ 2</label></td>
+            <td><input name="num2" type="text"></td>
+        </tr>
+        <tr>
+            <td><label>Chọn phép toán</label></td>
+            <td><input name="op" type="radio" value="+" checked>Cộng
+                <br>
+            <input name="op" type="radio" value="-" >Trừ
+            <br>
+             <input name="op" type="radio" value="*" >Nhân
+             <br>
+            <input name="op" type="radio"  value="/">Chia
+            </td>
+        </tr>
+        
+         
+        <!--Lưu ý: input type = radio phải thêm value vào thẻ để lấy dữ liệu -->
+         
+          <tr>
+            <td><button id="cal">Thực hiện</button></td>
+            <td><input type="text" id="kq" readonly></td>
+          </tr>
+    </form>
+        
+    </table>
+    
+</body>
+
+<script>
+    document.getElementById("freg").addEventListener("submit",(e)=>{
+        //chặn reload trang
+        e.preventDefault();
+
+        let a = parseFloat(document.forms["freg"]["num1"].value); 
+        let b = parseFloat(document.forms["freg"]["num2"].value);
+        let op = document.forms["freg"]["op"].value;
+        let res = 0;
+        switch(op){
+            case '+':{
+                res = a+b;
+                break;
+            }
+            case '-':{
+                res = a-b;
+                break;
+            }
+            case '*':{
+                res = a*b;
+                break;
+            }
+            case '/':{
+                if(b!=0){
+                    res = a/b;
+                    res = res.toFixed(2);
+                }
+                break;
+            }
+        }
+        
+        document.forms["freg"]["kq"].value=res;
+
+    });
+
+   
+
+
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"> </script>
+    <title> Document</title>
+    <script>
+        $(document).ready(function(){
+            $("button#calDay").click(function(){
+                let t1 = $("input#t1").val();
+                let t2 = $("input#t2").val();
+
+                let d1 = new Date(t1);
+                let d2 = new Date(t2);
+                let kq = (d2.getTime()-d1.getTime())/(3600*24*1000);
+                if(kq==-1 || isNaN(kq)){
+                    alert("Ngay khong hop le ! \n");
+                    $("input#t1").val("");
+                    $("input#t2").val("");
+                }
+                else{
+                    $("p.kq").html("So ngay la: " + kq);
+                }
+                
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Tính số ngày giữa hai thời điểm</h1>
+    <table>
+        <tr>
+            <td><label>Từ ngày: </label></td>
+            <td><input type="date" id="t1"></td>
+        </tr>
+        <tr>
+            <td><label>Đến ngày: </label></td>
+            <td><input type="date" id="t2"></td>
+        </tr>
+    </table>
+    
+    
+    
+    <button id="calDay">Tính số ngày</button>
+    <p class="kq"></p>
+</body>
+</html>

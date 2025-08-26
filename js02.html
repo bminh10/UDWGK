@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="prompt"></h1>
+    <p id="ngaygio"></p>
+    <h1 id="dongho"></h1>
+    
+    <button id="date">Xem ngày giờ</button>
+    <script>
+        let m = prompt("Nhập tháng");
+        let y = prompt("Nhập năm");
+        let n;
+        switch(Number(m)){
+           case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            n = 31;
+            break;
+            case 4: case 6: case 6: case 9: case 11:
+                n=30;
+                break;
+            case 2:{
+                if(y % 4 == 0 && y % 100 != 0 || y%400 ==0){
+                    n=29;
+                }
+                else{
+                    n=28;
+                }
+                break;
+            }
+        }
+        document.getElementById('prompt').innerHTML= "Tháng " + m + " năm " + y + " có " + n + " ngày ";
+
+        document.getElementById("date").addEventListener("click",xemDate);
+        function xemDate(){
+            let d = new Date();
+            let thu = d.getDay()+1;
+            let ngay = d.getDate();
+            let thang = d.getMonth()+1;
+            let nam = d.getFullYear();
+            document.getElementById("ngaygio").innerHTML = "Hôm nay, " + "thứ " + thu + " ngày " + ngay +"/"+thang+"/"+nam + "</br>";
+            
+        }
+        document.getElementById("date").addEventListener("click", ()=>{
+            dongho = setInterval(demTG,1000);
+        });
+
+        
+        function demTG(){
+            let d = new Date();
+            let hour = d.getHours() > 9 ? d.getHours() : "0" + d.getHours();
+            let minute = d.getMinutes()>9 ? d.getMinutes() : "0"+ d.getMinutes();
+            let second = d.getSeconds()>9 ? d.getSeconds(): "0" + d.getSeconds();
+            document.getElementById("dongho").innerHTML = hour + ":" + minute + ":" + second;
+
+        }   
+        /*document.getElementById("dongho").addEventListener("click", () => {
+            dongho=setInterval(demTG,1000);
+        });*/
+    </script>
+</body>
+</html>

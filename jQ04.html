@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jq.js"></script>
+    <style>
+        div.xanh{
+            background-color: blue;
+        }
+        div.do{
+            background-color: red;
+        }
+        div.xanhla{
+            background-color:green;
+        }
+        div.tim{
+            background-color: purple;
+        }
+        div{
+            float:left;
+            margin: 10px;
+        }
+        div div{
+            height: 100px;
+            width: 100px;
+        }
+        #frame{
+            border: 3px solid lightgray;
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("div div").click(function(){
+                let color = $(this).css("background-color");
+                //console.log(color);
+                $("p#kq").html("<b>Mau ban chon la: </b>" + color);
+                $("p#kq").css({"color":color, "font-size": "20px"});
+                $("div#frame").css("background-color",color);
+
+            });
+        }); 
+    </script>
+</head>
+<body>
+    <div>
+        <p>Click lên các hình vuông</p>
+        <div class="xanh"></div>
+        <div class="do"></div>
+        <div class="tim"></div>
+        <div class="xanhla"></div>
+        <p id= "kq"></p>
+        <div id="frame"></div>
+    </div>
+    
+
+</body>
+</html>

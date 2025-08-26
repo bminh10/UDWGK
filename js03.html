@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p{
+        margin:0px;
+    }
+</style>
+<body>
+    
+    <table>
+        <caption><h1>String Statistic</h1></caption>
+        <tr>
+            <td>
+                <label>String: </label>
+            </td>
+            <td>
+                <input type="text" id="str">
+            </td>
+            
+        </tr>
+            
+        <tr>
+            <td></td>
+            <td><button id="lietke">Statistic</button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><p id="kq"></p></td>
+        </tr>
+        
+    </table>
+    
+    <script>
+        document.getElementById("lietke").addEventListener("click",Statistic);
+        function Statistic(){
+            let str = document.getElementById("str").value;
+            //kiem tra da lay duoc du lieu tu input chua
+            /*document.getElementById("kq").innerHTML=str;*/
+            let len = str.length;
+            let arr = new Array();
+            arr = str.split(" ");
+            /*document.getElementById("kq").innerHTML=arr[1];*/
+            
+            let words=0;
+            for(let i = 0 ; i < arr.length ; i++){
+                //xoa khoang trang du thua tai moi index
+                if(arr[i].trim()!= ""){
+                    words++;
+                }
+            }
+
+            let kq = "Character: " + len + "<br>" + "Words: " + words + "<br>";
+            
+
+
+            let arr_kq=new Array();
+            //khoi tao 128 o
+            for(let i = 0 ; i <= 127 ; i++){
+                arr_kq[i]=0;
+            }
+
+            for(let i = 0 ; i < len;i++){
+                if(str[i]>='a' && str[i]<='z'){
+                    arr_kq[str.charCodeAt(i)-32]++;
+                }
+                else{
+                    arr_kq[str.charCodeAt(i)]++; 
+                }
+            }
+
+            for(let i = 0 ; i < arr_kq.length ; i++){
+                if(arr_kq[i]>0){
+                    //String.fromCharCode(index) -> vd index = 65 thi se tra ve A
+                     kq += "Character '" + String.fromCharCode(i) + "': " + arr_kq[i] + "<br>";
+                }
+            }
+            
+            document.getElementById("kq").innerHTML=kq;
+
+            
+        }
+
+    </script>
+    
+</body>
+</html>

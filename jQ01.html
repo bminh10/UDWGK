@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src= "jq.js"></script>
+    <script>
+       $(document).ready(function(){
+        $("button#add").click(function(){
+            let text = $("input#namemh").val();
+            text = text.trim();
+            if(text!=""){
+                let kq = "<li>" + text + "</li>";
+                $("ul").append(kq);
+            }
+            $("input#namemh").val("");
+        });  
+        
+        $("input#namemh").change(function(){
+            let text = $("input#namemh").val();
+            text = text.trim();
+            if(text!=""){
+                let kq = "<li>" + text + "</li>";
+                $("ul").append(kq);
+            }
+            $("input#namemh").val("");
+        });
+    });
+    </script>
+     
+    <title>Document</title>
+</head>
+<body>
+    <label>Tên môn học</label>
+    <input type="text" id="namemh">
+    <ul >
+        <li>Python</li>
+        <li>PHP</li>
+    </ul>
+    <button id="add">Thêm môn học</button>
+    <script>
+        
+    </script>
+</body>
+</html>

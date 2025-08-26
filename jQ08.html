@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+    <style>
+        div.circle{
+            position: absolute;
+            border-radius: 100px;
+            height:100px;
+            width: 100px;
+            background-color: cyan;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            move = false;
+            $("div.circle").mousedown(function(e){
+                console.log(e.pageX);
+                console.log(this.offsetLeft);
+                prevX = e.pageX - this.offsetLeft;
+                prevY = e.pageY - this.offsetTop;
+                move = true;
+            });
+            $("div.circle").mousemove(function(e){
+                if(move){
+                    let curX = e.pageX - this.offsetLeft;
+                    let curY = e.pageY - this.offsetTop;
+
+                    let dx = curX - prevX;
+                    let dy = curY - prevY;
+                    let circleLeft = parseInt($(this).css("left"));
+                    let circleTop = parseInt($(this).css("top"));
+
+                    let newLeft = circleLeft + dx +"px";
+                    let newTop = circleTop + dy + "px";
+                    $(this).css("left",newLeft);
+                    $(this).css("top",newTop);
+                }
+            });
+            $("div.circle").mouseup(function(e){
+                move= false;
+            });
+
+            $("body").on("keydown",function(){
+                let newLeft = parseInt($("div.circle").css("left"));
+                
+                let newTop = parseInt($("div.circle").css("top"));
+                
+                let newleft = newLeft + "px";
+                
+                let newtop = newTop + "px";
+                switch(event.which){ 
+                    case 37:{
+                        newleft = newLeft - 10 + "px";
+                        
+                        break;
+                    }
+                    case 38:{
+                        newtop = newTop - 10 + "px";
+                        break;
+                    }
+                    case 39:{
+                        newleft = newLeft + 10 + "px";
+                        break;
+                    }
+                    case 40:{
+                        newtop = newTop + 10 + "px";
+                        break;
+                    }
+                }
+                $("div.circle").css("left",newleft);
+                $("div.circle").css("top",newtop);
+                
+            });
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <div class="circle"></div>
+</body>
+</html>

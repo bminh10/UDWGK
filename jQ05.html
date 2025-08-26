@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $("img").mouseover(function(){
+                $(this).attr("src","../html/Images/Images/dog.jpg").animate({
+                    height:"500px",
+                    width: "500px"
+                    
+                },"slow");
+            })
+            $("img").mouseout(function(){
+                $(this).attr("src","../html/Images/Images/ga.jpg").animate({
+                    height:"150px",
+                    width: "150px"
+                },"slow");
+            });
+            
+        });
+    </script>
+    <style>
+        body{
+            margin: 0px;
+        }
+        img{
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../html/Images/Images/ga.jpg">
+    
+</body>
+</html>

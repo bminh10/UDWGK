@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+    <style>
+        div div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20%;
+            background-color: lightgray;
+            height: 100px;
+            font-size: 50px;
+            
+            font-family: arial;
+            color:gray
+        }
+        div.container{
+            display: flex;
+            flex-direction: row;
+            
+        }
+        .style{
+            color:black;
+            background-image: url("../html/Images/Images/radial.png");
+            
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $(".container div").mouseover(function(){
+                $(this).animate({
+                    width: "40%",
+                    fontSize: "70px",
+                    fontWeight: 900,
+                    
+                },"slow").addClass("style");
+
+            })
+            .mouseout(function(){
+                $(this).animate({
+                    width: "20%",
+                    fontSize: "50px",
+                    fontWeight: 300
+                },"slow").removeClass("style");
+            });
+
+        
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+</body>
+</html>

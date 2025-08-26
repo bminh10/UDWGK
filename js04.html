@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Nhập số phần tử</label>
+    <input type="number" id="number" required>
+</br>
+    <button id="create">Tạo mảng</button>
+    <button id="sortASC">Sắp xếp mảng tăng</button>
+    <button id="sortDESC">Sắp xếp mảng giảm</button>
+    <p id="bandau"></p>
+    <p id="asc"></p>
+    <p id="desc"></p>
+
+    <script>
+        //khi dùng eventlistener -> không cần on nữa
+        let arr=new Array();
+        document.getElementById("number").addEventListener("change",()=>{
+            let val = parseInt(document.getElementById("number").value);
+            
+            if(isNaN(val) || val <= 0){
+                alert("Bạn không được nhập số phần tử <= 0");
+                document.getElementById("number").value = "";
+                //chan input trong form khi submit không gửi dữ liệu lên sever
+                event.preventDefault();
+            }
+            //su kien tao mang
+            document.getElementById("create").addEventListener("click",()=>{
+            
+            for(let i = 0 ; i < val ; i++){
+                arr[i]=Math.round(Math.random()*100);
+            }
+            //neu khong khai bao kq => undefinee
+            let kq=new String();
+            for(let i = 0 ; i < arr.length ; i++){
+                kq+= arr[i]+ " ";
+            }
+
+            document.getElementById("bandau").innerHTML ="Mảng ban đầu: " + kq;
+            });
+            
+        });
+            
+
+            
+            
+            
+            //sort
+            function DESC(a,b){
+                return b-a;//giam dan
+            }
+            function ASC(a,b){
+                return a-b; //tang dan
+            }
+            //su kien sap xep mang giam
+            document.getElementById("sortDESC").addEventListener("click",()=>{
+                
+            arr.sort(DESC);
+            let kq2 = new String();
+            for(let i = 0 ; i < arr.length ; i++){
+                kq2+=arr[i] + " ";
+            }
+            document.getElementById("desc").innerHTML = "Mảng giảm dần là: " + arr.join(" ");
+            });
+            
+            //su kien sap xep mang tang
+            document.getElementById("sortASC").addEventListener("click",()=>{
+                arr.sort(ASC);
+                let kq3 =new String();
+                for(let i = 0 ; i < arr.length ; i++){
+                    kq3+=arr[i] + " ";
+                }
+                document.getElementById("asc").innerHTML = "Mảng tăng dần là: " + kq3;
+            });
+       
+
+
+    </script>
+</body>
+</html>

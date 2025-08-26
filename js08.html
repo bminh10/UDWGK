@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#divtext{
+            
+            background-color: red;
+            height:100px
+
+        }
+
+        
+    </style>
+</head>
+<body>
+    
+    <div id="divtext">
+        <h1 id="kq">WELCOME TO HTML5!</h1>
+    </div>
+    <label>Nhập nội dung</label>
+    <input type="text" id="content">
+    <br>
+    <label>Màu nền:</label>
+    <input type="color" id="bgcolor">
+    <br>
+    <label>Màu chữ</label>
+    <input type="color" id="textcolor">
+    <br>
+    <button id="thuchien">Thực hiện</button>
+    <script>
+        document.getElementById("thuchien").addEventListener("click",(e)=>{
+            let text = document.getElementById("content").value;
+            let bgcolor = document.getElementById("bgcolor").value;
+            let tcolor=document.getElementById("textcolor").value;
+            
+            console.log(text);
+            document.getElementById("kq").innerHTML = text;
+            document.getElementById("divtext").style.color = tcolor;
+            document.getElementById("divtext").style.backgroundColor = bgcolor;
+
+        });
+
+    </script>
+</body>
+</html>

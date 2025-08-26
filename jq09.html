@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0px;
+        }
+        div.container{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            
+        }
+        div.result{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: antiquewhite;
+            width: 50%;
+            
+            
+        }
+        fieldset{
+            border: 2px solid blue;
+            
+        }
+        div.form{
+            background-color: antiquewhite;
+            width: 50%;
+            
+        }
+        p.color{
+            display: inline-block;
+        }
+        li{
+            font-size: 20px;
+        }
+        li:nth-child(odd){
+            background-color: purple;
+        }
+        li:nth-child(even){
+            background-color: cyan;
+        }
+        .shadow{
+            text-shadow: 5px 5px 5px black;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            //tạo mảng lưu lại các phần tử đã bị xoá
+            let a = [];
+            $("input#normal").click(function(){
+                //xoá tạo bóng để trở về chữ thường ban đầu
+                $("div.result > h1").removeClass("shadow");
+            });
+            //thêm class tạo bóng chữ
+            $("input#shadow").click(function(){
+                //chọn các phần tử h1 là con của div.result
+                $("div.result > h1").addClass("shadow");
+            });
+            //gán màu mỗi khi thay đổi màu trong input color
+            $("input#change").change(function(){
+                let val = $("input#change").val();
+                //chọn các h1 là con của div.result
+                $("div.result > h1").css("color",val);
+            });
+            //chọn li là con của ol
+            $("ol>li").click(function(){
+                //click vào các chữ sẽ hiển thị chữ đó ở kq ( chữ to bên phải )
+                //this = phần tử vừa click
+                let text = $(this).text();
+                $("div.result>h1").text(text);
+            });
+
+            $("button#delLast").click(function(){
+                //chặn load lại trang
+                 event.preventDefault();
+                 //nếu khác rỗng thì mới xoá
+                if( $("ol>li:last").text()!= ""){
+                    a.push($("ol>li:last").text());
+                    $("ol>li:last").remove();
+                }
+                
+                
+            });
+
+           $("button#reset").click(function(){
+                 event.preventDefault();
+                 //nếu mảng còn phần tử thì thêm lại vào list cho tới khi không còn
+                if(a.length>0){
+                    $("ol").append("<li>" + a.pop() + "</li>");
+                    //phai gan lai su kien sau khi phuc hoi
+                    $("ol > li").click(function(){
+                        let text = $(this).text();
+                        $("div.result>h1").text(text);
+                    });
+                }
+           });
+          
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <form>
+                <fieldset>
+                    <legend>Chọn</legend>
+                    <input type="radio" name="shadow" id="normal" checked>Chữ bình thường
+                    <br>
+                    <input type="radio" name="shadow" id="shadow" >Chữ có bóng
+                    <br>
+                    <p class="color">Chọn màu chữ</p>
+                    <input type="color" id="change">
+                    <br>
+                    <button id="delLast">Xoá phần tử cuối</button>
+                    <button id="reset">Phục hồi</button>
+                    
+                </fieldset>
+            </form>
+            <form>
+                <fieldset>
+                    <legend>Click vào một chuỗi</legend>
+                    <ol type="1">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JQUERY</li>
+                        <li>JAVASCRIPT</li>
+                    </ol>
+                </fieldset>
+            </form>
+        </div>
+        <div class="result">
+            <h1>HTML</h1>
+        </div>
+    </div>
+
+</body>
+</html>

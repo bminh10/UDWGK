@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src ="jq.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $("button#r").click(function(){
+                let l = $(window).width() - $("div.rec").innerWidth();
+                $("div.rec").animate({
+                    left : l,
+                    
+                },"slow");
+            });
+            $("button#l").click(function(){
+                $("div.rec").animate({
+                    left: "0px"
+                },"slow");
+            });
+            $("button#up").click(function(){
+                $("div.rec").animate({
+                    top:"0px"
+                },"slow");
+            });
+            $("button#down").click(function(){
+                let bottom = $(window).height() - $("div.rec").innerHeight();
+                $("div.rec").animate({
+                    top: bottom
+                },"slow");
+            });
+        });
+    </script>
+    <style>
+        div.rec{
+            position: relative;
+            background-color: red;
+            height:300px;
+            width: 300px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="rec"></div>
+    <button id="r">Move right</button>
+    <button id="l">Move left</button>
+    <button id="up">Move up</button>
+    <button id="down">Move down</button>
+</body>
+</html>
